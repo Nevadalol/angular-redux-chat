@@ -1,0 +1,8 @@
+<form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="form-group">
+    <div class="form-group">
+      <input [@loginFailed]="hasError" class="form-control" placeholder="Username" formControlName="username">
+    </div>
+  </div>
+  <button class="btn btn-primary">Join</button>
+</form>
