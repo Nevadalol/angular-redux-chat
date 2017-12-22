@@ -6,4 +6,5 @@ export interface RoomState {
   title: string;
   messages: MessageState[];
   users: UserState[];
+  totalUsers: number;
 }

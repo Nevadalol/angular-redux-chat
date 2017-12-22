@@ -1,17 +1,17 @@
 import { Reducer, combineReducers } from 'redux';
 
-import { userReducer, UserState } from './core/user/user.reducer';
+import { appUserReducer, AppUserState } from './core/app-user/app-user.reducer';
 import { loginReducer, LoginState } from './login/login.reducer';
 import { chatReducer, ChatState } from './chat/chat.reducer';
 
 export interface AppState {
   login: LoginState;
-  user: UserState;
+  appUser: AppUserState;
   chat: ChatState;
 }
 
 export let appReducer: Reducer<AppState> = combineReducers<AppState>({
-  user: userReducer,
+  appUser: appUserReducer,
   login: loginReducer,
   chat: chatReducer
 });

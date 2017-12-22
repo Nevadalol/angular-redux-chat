@@ -1,15 +1,15 @@
 import { Reducer } from 'redux';
-import { SET_USER, UserAction } from './user.actions';
+import { SET_USER, AppUserAction } from './app-user.actions';
 
-export interface UserState {
+export interface AppUserState {
   username: string;
 }
 
-const initialUserState: UserState = {
+const initialUserState: AppUserState = {
   username: ''
 };
 
-export let userReducer: Reducer<UserState> = function (state: UserState = initialUserState, action: UserAction) {
+export let appUserReducer: Reducer<AppUserState> = function (state: AppUserState = initialUserState, action: AppUserAction) {
   switch (action.type) {
     case SET_USER:
       return Object.assign({}, state, {username: action.username});

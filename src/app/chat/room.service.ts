@@ -10,9 +10,9 @@ export class RoomService {
 
   fetchRooms (): Observable<RoomState[]> {
     let mock: RoomState[] = [
-      {id: 1, title: 'Foo', messages: [], users: []},
-      {id: 2, title: 'Bar', messages: [], users: []},
-      {id: 3, title: 'Baz', messages: [], users: []}
+      {id: 1, title: 'Foo', messages: [], users: [], totalUsers: 12},
+      {id: 2, title: 'Bar', messages: [], users: [], totalUsers: 32},
+      {id: 3, title: 'Baz', messages: [], users: [], totalUsers: 21}
     ];
 
     return Observable.of(mock).delay(300);
