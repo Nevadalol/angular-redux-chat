@@ -1,5 +1,8 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AppStore } from '../../app.store';
+import { ActivatedRoute } from '@angular/router';
+
+import { RoomState } from '../room.state';
 
 @Component({
   selector: 'app-rooms',
@@ -7,17 +10,23 @@ import { AppStore } from '../../app.store';
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-  username: string;
+  rooms: RoomState[];
 
-  constructor (@Inject(AppStore) private appStore) { }
+  constructor (
+    @Inject(AppStore) private appStore,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.appStore.subscribe(() => this.readStore());
+    this.route.data.subscribe((data: {rooms: RoomState[]}) => {
+      this.rooms = data.rooms;
+    });
 
     this.readStore();
   }
 
   readStore () {
-    this.username = this.appStore.getState().user.username;
+    //this.rooms = data.rooms;
   }
 }

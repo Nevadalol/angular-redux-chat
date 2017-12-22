@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IsAuthenticatedGuard } from '../common/guards/is-authenticated.guard';
 import { RoomsComponent } from './rooms/rooms.component';
+import { RoomsResolverService } from './rooms/rooms-resolver.service';
 
 const routes: Routes = [{
   path: 'rooms',
   component: RoomsComponent,
-  canActivate: [IsAuthenticatedGuard]
+  canActivate: [IsAuthenticatedGuard],
+  resolve: {
+    rooms: RoomsResolverService
+  }
 }];
 
 @NgModule({
@@ -16,6 +20,9 @@ const routes: Routes = [{
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    RoomsResolverService
   ]
 })
 export class ChatRoutingModule { }
