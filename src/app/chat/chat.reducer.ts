@@ -1,12 +1,12 @@
 import { Reducer, Action } from 'redux';
-import { Room } from './room';
+import { RoomState } from './room.state';
 
 export interface ChatState {
-  rooms: Room[];
+  rooms: RoomState[];
 }
 
 interface ChatAction extends Action {
-  rooms: Room[];
+  rooms: RoomState[];
 }
 
 const initialChatState: ChatState = {
