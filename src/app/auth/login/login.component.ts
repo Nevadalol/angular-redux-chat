@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { authFailed, authSuccessful } from '../auth.actions';
-import { setUser } from '../core/user/user.actions';
-import { AuthService } from '../core/auth.service';
+import { setUser } from '../../core/user/user.actions';
+import { AuthService } from '../auth.service';
 import { AppStore } from '../../app.store';
 
 @Component({
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   readState () {
-    this.hasError = this.appStore.getState().login.hasError;
+    this.hasError = this.appStore.getState().auth.hasError;
   }
 
   onLogin () {
