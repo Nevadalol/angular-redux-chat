@@ -1,18 +1,18 @@
 import { Reducer, combineReducers } from 'redux';
 
-import { userReducer, UserState } from './core/user/user.reducer';
+import { appUserReducer, AppUserState } from './core/app-user/app-user.reducer';
 import { authReducer } from './auth/auth.reducer';
 import { AuthState } from './auth/auth.state';
 import { chatReducer, ChatState } from './chat/chat.reducer';
 
 export interface AppState {
   auth: AuthState;
-  user: UserState;
+  user: AppUserState;
   chat: ChatState;
 }
 
 export let appReducer: Reducer<AppState> = combineReducers<AppState>({
-  user: userReducer,
+  user: appUserReducer,
   auth: authReducer,
   chat: chatReducer
 });

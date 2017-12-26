@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { authFailed, authSuccessful } from '../auth.actions';
-import { setUser } from '../../core/user/user.actions';
+import { setAppUser } from '../../core/app-user/app-user.actions';
 import { AuthService } from '../auth.service';
 import { AppStore } from '../../app.store';
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
 
   onSuccessLogin (username) {
     this.appStore.dispatch(authSuccessful());
-    this.appStore.dispatch(setUser(username));
+    this.appStore.dispatch(setAppUser(username));
     this.router.navigate(['rooms']);
   }
 
