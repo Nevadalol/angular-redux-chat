@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { ChatModule } from './chat/chat.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     CoreModule,
-    LoginModule,
+    AuthModule,
     ChatModule,
     AppRoutingModule
   ],

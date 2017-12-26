@@ -12,7 +12,7 @@ export class IsAuthenticatedGuard implements CanActivate {
   ) { }
 
   private _isAuthenticated (): boolean {
-    return this.appStore.getState().login.isAuthenticated;
+    return this.appStore.getState().auth.isAuthenticated;
   }
 
   canActivate (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

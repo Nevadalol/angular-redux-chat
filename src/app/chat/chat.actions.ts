@@ -1,2 +1,2 @@
-export class Chat.Actions {
+export class ChatActions {
 }

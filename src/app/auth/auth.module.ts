@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from '../core/auth.service';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    AuthRoutingModule,
     ReactiveFormsModule
   ],
   providers: [
@@ -19,4 +19,4 @@ import { LoginComponent } from './login.component';
     LoginComponent
   ]
 })
-export class LoginModule { }
+export class AuthModule { }

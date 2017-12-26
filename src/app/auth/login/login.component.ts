@@ -3,10 +3,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { loginFailed, loginSuccessful } from './login.actions';
+import { authFailed, authSuccessful } from '../auth.actions';
 import { setUser } from '../core/user/user.actions';
 import { AuthService } from '../core/auth.service';
-import { AppStore } from '../app.store';
+import { AppStore } from '../../app.store';
 
 @Component({
   selector: 'app-auth',
@@ -60,12 +60,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessLogin (username) {
-    this.appStore.dispatch(loginSuccessful());
+    this.appStore.dispatch(authSuccessful());
     this.appStore.dispatch(setUser(username));
     this.router.navigate(['rooms']);
   }
 
   onErrorLogin () {
-    this.appStore.dispatch(loginFailed());
+    this.appStore.dispatch(authFailed());
   }
 }
