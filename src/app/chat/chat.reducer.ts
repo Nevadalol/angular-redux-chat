@@ -1,17 +1,8 @@
-import { Reducer, Action } from 'redux';
-import { RoomState } from './room.state';
+import { Reducer } from 'redux';
 
-export interface ChatState {
-  rooms: RoomState[];
-}
+import { ChatState, initialChatState } from './chat.state';
+import { ChatAction } from './chat.actions';
 
-interface ChatAction extends Action {
-  rooms: RoomState[];
-}
-
-const initialChatState: ChatState = {
-  rooms: []
-};
 
 export let chatReducer: Reducer<any> = function (state: ChatState = initialChatState, action: ChatAction) {
   switch (action.type) {

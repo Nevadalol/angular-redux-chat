@@ -1,2 +1,4 @@
-export class ChatActions {
+import { Action } from 'redux';
+
+export interface ChatAction extends Action {
 }
