@@ -1,13 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RoomState } from '../room.state';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: '[appRoom]',
+  selector: 'app-room',
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit {
-  @Input() room: RoomState;
 
   constructor() { }
 

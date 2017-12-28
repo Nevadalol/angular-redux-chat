@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ChatRoutingModule } from './chat-routing.module';
-import { RoomsComponent } from './rooms/rooms.component';
 import { RoomComponent } from './room/room.component';
-import { RoomService } from './room.service';
+import { RoomsComponent } from './rooms/rooms.component';
+import { UsersComponent } from './users/users.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageFormComponent } from './message-form/message-form.component';
 
 @NgModule({
   imports: [
@@ -12,11 +14,12 @@ import { RoomService } from './room.service';
     ChatRoutingModule
   ],
   declarations: [
-    RoomsComponent,
-    RoomComponent
-  ],
+  RoomComponent,
+  RoomsComponent,
+  UsersComponent,
+  MessagesComponent,
+  MessageFormComponent],
   providers: [
-    RoomService
   ]
 })
 export class ChatModule { }
