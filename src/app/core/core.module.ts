@@ -13,7 +13,6 @@ import { IsAuthenticatedGuard } from '../common/guards/is-authenticated.guard';
   providers: [
     appStoreProvider,
     IsAuthenticatedGuard
-  ],
-  declarations: []
+  ]
 })
 export class CoreModule { }
