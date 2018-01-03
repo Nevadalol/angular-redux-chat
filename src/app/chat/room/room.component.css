@@ -1,0 +1,12 @@
+:host {
+  display: grid;
+  grid-template-columns: auto 120px;
+  grid-template-rows: auto;
+  height: 100%;
+}
+
+.message-section {
+  display: grid;
+  grid-template-rows: auto 50px;
+  grid-template-columns: auto;
+}

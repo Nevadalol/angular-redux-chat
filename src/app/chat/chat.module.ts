@@ -14,11 +14,12 @@ import { MessageFormComponent } from './message-form/message-form.component';
     ChatRoutingModule
   ],
   declarations: [
-  RoomComponent,
-  RoomsComponent,
-  UsersComponent,
-  MessagesComponent,
-  MessageFormComponent],
+    RoomComponent,
+    RoomsComponent,
+    UsersComponent,
+    MessagesComponent,
+    MessageFormComponent
+  ],
   providers: [
   ]
 })
