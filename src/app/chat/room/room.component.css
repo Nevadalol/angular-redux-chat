@@ -7,6 +7,10 @@
 
 .message-section {
   display: grid;
-  grid-template-rows: auto 50px;
+  grid-template-rows: 50px auto 50px;
   grid-template-columns: auto;
+}
+
+.room-name {
+  margin: 10px 0 0 0;
 }
