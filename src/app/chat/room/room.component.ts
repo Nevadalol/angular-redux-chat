@@ -26,10 +26,10 @@ export class RoomComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => this.room = this.getRoom(+paramMap.get('id')));
+    this.route.paramMap.subscribe(paramMap => this.room = this.getRoomState(+paramMap.get('id')));
   }
 
-  private getRoom (id: number): RoomState {
+  private getRoomState (id: number): RoomState {
     return this.store.getState().chat.rooms.find(room => room.id === id);
   }
 }

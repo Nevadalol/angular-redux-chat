@@ -14,17 +14,19 @@ export class UsersComponent implements OnInit {
   users: UserState[];
 
   constructor (
-    @Inject(AppStore) private appStore,
+    @Inject(AppStore) private store,
     private usersService: UsersService
   ) { }
 
   ngOnInit() {
-    this.appStore.subscribe(() => this.readStore());
+    this.store.subscribe(() => this._readStore());
 
-    this.usersService.fetchUsers().subscribe((users) => this.appStore.dispatch(usersFetched(users)));
+    this.usersService.fetchUsers().subscribe(
+      users => this.store.dispatch(usersFetched(users))
+    );
   }
 
-  readStore () {
-    this.users = this.appStore.getState().chat.users;
+  private _readStore () {
+    this.users = this.store.getState().chat.users;
   }
 }
