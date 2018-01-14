@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor () { }
 
-  login (username: string) {
+  authenticate (username: string): Observable<string> {
     return username === 'Batman'
       ? Observable.of(username).delay(500)
       : Observable.throw('Wrong username.');

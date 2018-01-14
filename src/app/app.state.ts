@@ -1,4 +1,4 @@
-import { AppUserState } from './core/app-user/app-user.reducer';
+import { AppUserState } from './core/app-user/app-user.state';
 import { AuthState } from './auth/auth.state';
 import { ChatState } from './chat/chat.state';
 

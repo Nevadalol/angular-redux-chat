@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin () {
-    this.authService.login(this.getUsername())
+    this.authService.authenticate(this.getUsername())
         .subscribe({
           next: (username) => this.onSuccessLogin(username),
           error: () => this.onErrorLogin()
@@ -61,7 +61,11 @@ export class LoginComponent implements OnInit {
 
   onSuccessLogin (username) {
     this.appStore.dispatch(authSuccessful());
-    this.appStore.dispatch(setAppUser(username));
+    this.appStore.dispatch(setAppUser({
+      id: 123,
+      username
+    }));
+
     this.router.navigate(['rooms']);
   }
 
