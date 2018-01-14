@@ -1,0 +1,13 @@
+:host {
+  padding: 10px 0;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 5px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: 0;
+}

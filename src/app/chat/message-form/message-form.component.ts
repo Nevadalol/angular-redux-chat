@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import { addMessage } from '../chat.actions';
+import { AppStore } from '../../app.store';
 
 @Component({
   selector: 'app-message-form',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-form.component.css']
 })
 export class MessageFormComponent implements OnInit {
+  message: FormControl = new FormControl();
 
-  constructor() { }
+  constructor (
+    @Inject(AppStore) private store
+  ) { }
 
-  ngOnInit() {
+  ngOnInit () {
   }
 
+  sendMessage (event: KeyboardEvent) {
+    event.preventDefault();
+
+    if (this.message.value.length) {
+      this.store.dispatch(addMessage({
+        authorId: 3,
+        roomId: 1,
+        content: this.message.value
+      }));
+
+      this.message.setValue('');
+    }
+  }
 }

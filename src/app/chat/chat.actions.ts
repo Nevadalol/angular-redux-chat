@@ -16,6 +16,10 @@ export interface MessagesFetchedAction extends Action {
   messages: MessageState[];
 }
 
+export interface AddMessageAction extends Action {
+  message: MessageState;
+}
+
 export let roomsFetched: ActionCreator<RoomsFetchedAction> = function (rooms: RoomState[]) {
   return {
     type: 'ROOMS_FETCHED',
@@ -34,5 +38,12 @@ export let messagesFetched: ActionCreator<MessagesFetchedAction> = function (mes
   return {
     type: 'MESSAGES_FETCHED',
     messages
+  };
+};
+
+export let addMessage: ActionCreator<AddMessageAction> = function (message: MessageState) {
+  return {
+    type: 'ADD_MESSAGE',
+    message
   };
 };

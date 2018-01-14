@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 import { ChatRoutingModule } from './chat-routing.module';
 import { RoomComponent } from './room/room.component';
@@ -11,6 +12,7 @@ import { MessageFormComponent } from './message-form/message-form.component';
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ChatRoutingModule
   ],
   declarations: [
