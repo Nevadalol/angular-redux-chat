@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AppStore } from '../../app.store';
 
-import { MessagesService } from './messages.service';
-import { messagesFetched } from '../chat.actions';
 import { MessageState } from './message.state';
+import { AppStore } from '../../app.store';
 
 @Component({
   selector: 'app-messages',
@@ -14,16 +12,17 @@ export class MessagesComponent implements OnInit {
   messages: MessageState[];
 
   constructor (
-    @Inject(AppStore) private store,
-    private messagesService: MessagesService,
+    @Inject(AppStore) private store
   ) { }
 
   ngOnInit () {
     this.store.subscribe(() => this._readStore());
 
-    this.messagesService.fetchMessages().subscribe(
-      messages => this.store.dispatch(messagesFetched(messages))
-    );
+    this._readStore();
+  }
+
+  getAuthorUsername (id): string {
+    return this.store.getState().chat.users.find(user => user.id === id).username;
   }
 
   private _readStore () {

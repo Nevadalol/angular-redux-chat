@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Resolve } from '@angular/router';
 import 'rxjs/add/observable/of';
 
 import { MessageState } from './message.state';
 
 @Injectable()
-export class MessagesService {
+export class MessagesService implements Resolve<MessageState[]> {
 
   constructor () {}
 
-  fetchMessages (): Observable<MessageState[]> {
+  resolve (): Observable<MessageState[]> {
     return Observable.of([{
       id: 1,
       authorId: 1,

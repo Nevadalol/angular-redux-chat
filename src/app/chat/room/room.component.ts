@@ -6,16 +6,15 @@ import { UsersService } from '../users/users.service';
 import { RoomsService } from '../rooms/rooms.service';
 import { AppStore } from '../../app.store';
 import { RoomState } from './room.state';
+import { UserState } from '../users/user.state';
+import { MessageState } from '../messages/message.state';
+
+import { messagesFetched, usersFetched } from '../chat.actions';
 
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css'],
-  providers: [
-    MessagesService,
-    RoomsService,
-    UsersService
-  ]
+  styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit {
   room: RoomState;
@@ -27,6 +26,11 @@ export class RoomComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => this.room = this.getRoomState(+paramMap.get('id')));
+
+    this.route.data.subscribe((data: {users: UserState[], messages: MessageState[]}) => {
+      this.store.dispatch(usersFetched(data.users));
+      this.store.dispatch(messagesFetched(data.messages));
+    });
   }
 
   private getRoomState (id: number): RoomState {

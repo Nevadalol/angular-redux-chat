@@ -6,6 +6,9 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { RoomComponent } from './room/room.component';
 import { RoomsService } from './rooms/rooms.service';
 
+import { MessagesService } from './messages/messages.service';
+import { UsersService } from './users/users.service';
+
 const routes: Routes = [{
   path: 'rooms',
   component: RoomsComponent,
@@ -16,7 +19,11 @@ const routes: Routes = [{
 }, {
   path: 'rooms/:id',
   component: RoomComponent,
-  canActivate: [IsAuthenticatedGuard]
+  canActivate: [IsAuthenticatedGuard],
+  resolve: {
+    messages: MessagesService,
+    users: UsersService
+  }
 }];
 
 @NgModule({
@@ -27,7 +34,9 @@ const routes: Routes = [{
     RouterModule
   ],
   providers: [
-    RoomsService
+    RoomsService,
+    MessagesService,
+    UsersService
   ]
 })
 export class ChatRoutingModule { }

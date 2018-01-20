@@ -1,1 +1,4 @@
-<p *ngFor="let message of messages">{{message.content}}</p>
+<p *ngFor="let message of messages">
+  <i>{{getAuthorUsername(message.authorId)}}: </i>
+  <span>{{message.content}}</span>
+</p>

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Resolve } from '@angular/router';
 import 'rxjs/add/observable/of';
 
 import { UserState } from './user.state';
 
 @Injectable()
-export class UsersService {
+export class UsersService implements Resolve<UserState[]> {
 
   constructor () { }
 
-  fetchUsers (): Observable<UserState[]> {
+  resolve (): Observable<UserState[]> {
     return Observable.of([{
       id: 1,
       username: 'Mishka'
