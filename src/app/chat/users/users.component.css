@@ -2,3 +2,14 @@ li {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.users-panel {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 100%;
+}
+
+.panel-heading {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

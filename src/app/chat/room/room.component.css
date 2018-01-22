@@ -1,16 +1,37 @@
 :host {
-  display: grid;
-  grid-template-columns: auto 120px;
-  grid-template-rows: auto;
+  display: flex;
   height: 100%;
 }
 
-.message-section {
+.panel-primary {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  margin-bottom: 0;
+  flex-grow: 2;
+
   display: grid;
-  grid-template-rows: 50px auto 70px;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
 }
 
-.room-name {
-  margin: 10px 0 0 0;
+.panel-heading {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.room-body {
+  display: grid;
+  grid-template-rows: 1fr 70px;
+  grid-template-columns: 1fr;
+}
+
+app-messages {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+app-message-form {
+  grid-column: 1 / 1;
+  grid-row: 2 / 2;
 }

@@ -1,8 +1,10 @@
-<section class="message-section">
-  <header>
-    <h2 class="room-name">{{room.title}}</h2>
+<section class="panel panel-primary">
+  <header class="panel-heading">
+    <h2 class="panel-title">{{room.title}}</h2>
   </header>
-  <app-messages></app-messages>
-  <app-message-form></app-message-form>
+  <div class="panel-body room-body">
+    <app-messages></app-messages>
+    <app-message-form></app-message-form>
+  </div>
 </section>
 <app-users></app-users>

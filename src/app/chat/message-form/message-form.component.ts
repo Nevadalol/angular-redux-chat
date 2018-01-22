@@ -24,7 +24,7 @@ export class MessageFormComponent implements OnInit {
 
     if (this.message.value.length) {
       this.store.dispatch(addMessage({
-        authorId: this.store.getState().use,
+        authorId: this.store.getState().user.id,
         roomId: 1,
         content: this.message.value
       }));

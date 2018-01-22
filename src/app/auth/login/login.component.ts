@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   onSuccessLogin (username) {
     this.appStore.dispatch(authSuccessful());
     this.appStore.dispatch(setAppUser({
-      id: 123,
+      id: 3,
       username
     }));
 
