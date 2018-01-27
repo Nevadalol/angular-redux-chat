@@ -21,17 +21,10 @@
 }
 
 .room-body {
-  display: grid;
-  grid-template-rows: 1fr 70px;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 app-messages {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-}
-
-app-message-form {
-  grid-column: 1 / 1;
-  grid-row: 2 / 2;
+  flex: 1;
 }
