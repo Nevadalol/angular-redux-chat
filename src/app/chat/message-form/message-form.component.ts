@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { addMessage } from '../chat.actions';
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 
 @Component({
   selector: 'app-message-form',

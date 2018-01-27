@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { authFailed, authSuccessful } from '../auth.actions';
 import { setAppUser } from '../../core/app-user/app-user.actions';
 import { AuthService } from '../auth.service';
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 
 @Component({
   selector: 'app-auth',

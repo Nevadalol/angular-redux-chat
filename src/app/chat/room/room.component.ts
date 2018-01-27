@@ -1,10 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { MessagesService } from '../messages/messages.service';
-import { UsersService } from '../users/users.service';
-import { RoomsService } from '../rooms/rooms.service';
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 import { RoomState } from './room.state';
 import { UserState } from '../users/user.state';
 import { MessageState } from '../messages/message.state';

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { UserState } from './user.state';
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 
 @Component({
   selector: 'app-users',

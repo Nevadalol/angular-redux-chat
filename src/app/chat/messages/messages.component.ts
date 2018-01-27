@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { MessageState } from './message.state';
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 
 @Component({
   selector: 'app-messages',

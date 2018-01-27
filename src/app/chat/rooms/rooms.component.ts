@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AppStore } from '../../app.store';
+import { AppStore } from '../../core/app.store';
 import { RoomState } from '../room/room.state';
 import { roomsFetched } from '../chat.actions';
 
