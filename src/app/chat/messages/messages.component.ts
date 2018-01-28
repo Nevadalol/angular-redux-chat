@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Unsubscribe } from 'redux';
 
 import { MessageState } from './message.state';
 import { AppStore } from '../../core/app.store';
@@ -8,15 +9,20 @@ import { AppStore } from '../../core/app.store';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
+  private storeSubscription: Unsubscribe;
   messages: MessageState[];
 
   constructor (private store: AppStore) { }
 
   ngOnInit () {
-    this.store.subscribe(() => this._readStore());
+    this.storeSubscription = this.store.subscribe(() => this._readStore());
 
     this._readStore();
+  }
+
+  ngOnDestroy () {
+    this.storeSubscription();
   }
 
   getAuthorUsername (id): string {

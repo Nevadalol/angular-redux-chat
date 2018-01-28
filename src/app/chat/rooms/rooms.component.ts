@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { Unsubscribe } from 'redux';
 
 import { AppStore } from '../../core/app.store';
 import { RoomState } from '../room/room.state';
@@ -10,7 +12,9 @@ import { roomsFetched } from '../chat.actions';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, OnDestroy {
+  private routeDataSubscription: Subscription;
+  private storeSubscription: Unsubscribe;
   rooms: RoomState[] = [];
 
   constructor (
@@ -19,11 +23,16 @@ export class RoomsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.subscribe(() => this.readStore());
+    this.storeSubscription = this.store.subscribe(() => this.readStore());
 
-    this.route.data.subscribe((data: {rooms: RoomState[]}) => {
+    this.routeDataSubscription = this.route.data.subscribe((data: {rooms: RoomState[]}) => {
       this.store.dispatch(roomsFetched(data.rooms));
     });
+  }
+
+  ngOnDestroy () {
+    this.routeDataSubscription.unsubscribe();
+    this.storeSubscription();
   }
 
   private readStore () {

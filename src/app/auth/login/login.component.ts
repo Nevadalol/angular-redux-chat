@@ -1,7 +1,8 @@
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Unsubscribe } from 'redux';
 
 import { authFailed, authSuccessful } from '../auth.actions';
 import { AuthService } from '../auth.service';
@@ -24,7 +25,8 @@ import { AppStore } from '../../core/app.store';
     ])
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  private storeSubscription: Unsubscribe;
   loginForm: FormGroup;
   hasError: boolean;
 
@@ -37,9 +39,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit () {
     this.loginForm = this.fb.group({username: ''});
-    this.store.subscribe(() => this.readState());
+    this.storeSubscription = this.store.subscribe(() => this.readState());
 
     this.readState();
+  }
+
+  ngOnDestroy () {
+    this.storeSubscription();
   }
 
   readState () {

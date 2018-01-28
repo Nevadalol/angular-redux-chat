@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { AppStore } from '../../core/app.store';
 import { RoomState } from './room.state';
@@ -13,7 +14,9 @@ import { messagesFetched, usersFetched } from '../chat.actions';
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.css']
 })
-export class RoomComponent implements OnInit {
+export class RoomComponent implements OnInit, OnDestroy {
+  private routeParamMapSubscription: Subscription;
+  private routeDataSubscription: Subscription;
   room: RoomState;
 
   constructor (
@@ -22,12 +25,19 @@ export class RoomComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => this.room = this.getRoomState(+paramMap.get('id')));
+    this.routeParamMapSubscription = this.route.paramMap.subscribe(
+      paramMap => this.room = this.getRoomState(+paramMap.get('id'))
+    );
 
-    this.route.data.subscribe((data: {users: UserState[], messages: MessageState[]}) => {
+    this.routeDataSubscription = this.route.data.subscribe((data: {users: UserState[], messages: MessageState[]}) => {
       this.store.dispatch(usersFetched(data.users));
       this.store.dispatch(messagesFetched(data.messages));
     });
+  }
+
+  ngOnDestroy () {
+    this.routeParamMapSubscription.unsubscribe();
+    this.routeDataSubscription.unsubscribe();
   }
 
   private getRoomState (id: number): RoomState {
