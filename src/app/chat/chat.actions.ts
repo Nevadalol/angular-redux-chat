@@ -4,19 +4,25 @@ import { RoomState } from './room/room.state';
 import { UserState } from './users/user.state';
 import { MessageState } from './messages/message.state';
 
+export type ChatActionTypes = RoomsFetchedAction | UsersFetchedAction | MessagesFetchedAction | AddMessageAction;
+
 export interface RoomsFetchedAction extends Action {
+  type: 'ROOMS_FETCHED';
   rooms: RoomState[];
 }
 
 export interface UsersFetchedAction extends Action {
+  type: 'USERS_FETCHED';
   users: UserState[];
 }
 
 export interface MessagesFetchedAction extends Action {
+  type: 'MESSAGES_FETCHED';
   messages: MessageState[];
 }
 
 export interface AddMessageAction extends Action {
+  type: 'ADD_MESSAGE';
   message: MessageState;
 }
 

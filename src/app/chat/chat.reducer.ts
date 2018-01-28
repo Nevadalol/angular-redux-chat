@@ -1,21 +1,21 @@
-import { Reducer, Action } from 'redux';
+import { Reducer } from 'redux';
 
 import { ChatState, initialChatState } from './chat.state';
-import * as ChatActions from './chat.actions';
+import { ChatActionTypes } from './chat.actions';
 
-export let chatReducer: Reducer<ChatState> = function (state: ChatState = initialChatState, action: Action) {
+export let chatReducer: Reducer<ChatState> = function (state: ChatState = initialChatState, action: ChatActionTypes) {
   switch (action.type) {
     case 'ROOMS_FETCHED':
-      return Object.assign({}, state, {rooms: (<ChatActions.RoomsFetchedAction>action).rooms});
+      return Object.assign({}, state, {rooms: action.rooms});
 
     case 'USERS_FETCHED':
-      return Object.assign({}, state, {users: (<ChatActions.UsersFetchedAction>action).users});
+      return Object.assign({}, state, {users: action.users});
 
     case 'MESSAGES_FETCHED':
-      return Object.assign({}, state, {messages: (<ChatActions.MessagesFetchedAction>action).messages});
+      return Object.assign({}, state, {messages: action.messages});
 
     case 'ADD_MESSAGE':
-      return Object.assign({}, state, {messages: state.messages.concat((<ChatActions.AddMessageAction>action).message)});
+      return Object.assign({}, state, {messages: state.messages.concat(action.message)});
 
     default:
       return state;
