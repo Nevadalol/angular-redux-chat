@@ -1,10 +1,9 @@
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { authFailed, authSuccessful } from '../auth.actions';
-import { setAppUser } from '../../core/app-user/app-user.actions';
 import { AuthService } from '../auth.service';
 import { AppStore } from '../../core/app.store';
 
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
   hasError: boolean;
 
   constructor (
-    @Inject(AppStore) private appStore,
+    private store: AppStore,
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder
@@ -38,13 +37,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit () {
     this.loginForm = this.fb.group({username: ''});
-    this.appStore.subscribe(() => this.readState());
+    this.store.subscribe(() => this.readState());
 
     this.readState();
   }
 
   readState () {
-    this.hasError = this.appStore.getState().auth.hasError;
+    this.hasError = this.store.getState().auth.hasError;
   }
 
   onLogin () {
@@ -60,8 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessLogin (username) {
-    this.appStore.dispatch(authSuccessful());
-    this.appStore.dispatch(setAppUser({
+    this.store.dispatch(authSuccessful({
       id: 3,
       username
     }));
@@ -70,6 +68,6 @@ export class LoginComponent implements OnInit {
   }
 
   onErrorLogin () {
-    this.appStore.dispatch(authFailed());
+    this.store.dispatch(authFailed());
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppStore } from '../../core/app.store';
@@ -17,7 +17,7 @@ export class RoomComponent implements OnInit {
   room: RoomState;
 
   constructor (
-    @Inject(AppStore) private store,
+    private store: AppStore,
     private route: ActivatedRoute
   ) { }
 

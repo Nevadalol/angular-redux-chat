@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, Injector } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { addMessage } from '../chat.actions';
@@ -9,22 +9,17 @@ import { AppStore } from '../../core/app.store';
   templateUrl: './message-form.component.html',
   styleUrls: ['./message-form.component.css']
 })
-export class MessageFormComponent implements OnInit {
+export class MessageFormComponent {
   message: FormControl = new FormControl();
 
-  constructor (
-    @Inject(AppStore) private store
-  ) { }
-
-  ngOnInit () {
-  }
+  constructor (private store: AppStore) { }
 
   sendMessage (event: KeyboardEvent) {
     event.preventDefault();
 
     if (this.message.value.length) {
       this.store.dispatch(addMessage({
-        authorId: this.store.getState().user.id,
+        authorId: this.store.getState().auth.user.id,
         roomId: 1,
         content: this.message.value
       }));

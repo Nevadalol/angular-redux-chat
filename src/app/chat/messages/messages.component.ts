@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { MessageState } from './message.state';
 import { AppStore } from '../../core/app.store';
@@ -11,9 +11,7 @@ import { AppStore } from '../../core/app.store';
 export class MessagesComponent implements OnInit {
   messages: MessageState[];
 
-  constructor (
-    @Inject(AppStore) private store
-  ) { }
+  constructor (private store: AppStore) { }
 
   ngOnInit () {
     this.store.subscribe(() => this._readStore());

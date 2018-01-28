@@ -1,15 +1,22 @@
-import { Reducer, Action } from 'redux';
+import { Reducer } from 'redux';
 
-import { AUTH_SUCCESSFUL, AUTH_FAILED } from './auth.actions';
+import { AuthActionTypes, AUTH_SUCCESSFUL, AUTH_FAILED } from './auth.actions';
 import { AuthState, initialAuthState } from './auth.state';
 
-export let authReducer: Reducer<AuthState> = function (state: AuthState = initialAuthState, action: Action) {
+export let authReducer: Reducer<AuthState> = function (state: AuthState = initialAuthState, action: AuthActionTypes) {
   switch (action.type) {
     case AUTH_SUCCESSFUL:
-      return Object.assign({}, state, {isAuthenticated: true, hasError: false});
+      return Object.assign({}, state, {
+        isAuthenticated: action.isAuthenticated,
+        hasError: action.hasError,
+        user: action.user
+      });
 
     case AUTH_FAILED:
-      return Object.assign({}, state, {isAuthenticated: false, hasError: true});
+      return Object.assign({}, state, {
+        isAuthenticated: action.isAuthenticated,
+        hasError: action.hasError
+      });
 
     default:
       return state;

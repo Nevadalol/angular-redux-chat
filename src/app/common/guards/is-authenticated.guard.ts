@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { AppStore } from '../../core/app.store';
@@ -7,12 +7,12 @@ import { AppStore } from '../../core/app.store';
 export class IsAuthenticatedGuard implements CanActivate {
 
   constructor (
-    @Inject(AppStore) private appStore,
+    private store: AppStore,
     private router: Router
   ) { }
 
   private _isAuthenticated (): boolean {
-    return this.appStore.getState().auth.isAuthenticated;
+    return this.store.getState().auth.isAuthenticated;
   }
 
   canActivate (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
