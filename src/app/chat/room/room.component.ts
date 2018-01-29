@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { AppStore } from '../../core/app.store';
-import { RoomState } from './room.state';
-import { UserState } from '../users/user.state';
+import { messagesFetched } from '../actions/messages-fetched';
+import { usersFetched } from '../actions/users-fetched';
 import { MessageState } from '../messages/message.state';
-
-import { messagesFetched, usersFetched } from '../chat.actions';
+import { AppStore } from '../../core/app.store';
+import { UserState } from '../users/user.state';
+import { RoomState } from './room.state';
 
 @Component({
   selector: 'app-room',

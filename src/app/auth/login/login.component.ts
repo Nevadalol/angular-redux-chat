@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Unsubscribe } from 'redux';
 
-import { authFailed, authSuccessful } from '../auth.actions';
+import { authenticateSuccessful } from '../actions/authenticate-successful';
+import { authenticateFailed } from '../actions/authenticate-failed';
 import { AuthService } from '../auth.service';
 import { AppStore } from '../../core/app.store';
 
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSuccessLogin (username) {
-    this.store.dispatch(authSuccessful({
+    this.store.dispatch(authenticateSuccessful({
       id: 3,
       username
     }));
@@ -74,6 +75,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onErrorLogin () {
-    this.store.dispatch(authFailed());
+    this.store.dispatch(authenticateFailed());
   }
 }

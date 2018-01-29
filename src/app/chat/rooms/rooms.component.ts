@@ -5,7 +5,7 @@ import { Unsubscribe } from 'redux';
 
 import { AppStore } from '../../core/app.store';
 import { RoomState } from '../room/room.state';
-import { roomsFetched } from '../chat.actions';
+import { roomsFetched } from '../actions/rooms-fetched';
 
 @Component({
   selector: 'app-rooms',

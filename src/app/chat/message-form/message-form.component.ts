@@ -1,7 +1,7 @@
-import { Component, Inject, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { addMessage } from '../chat.actions';
+import { addMessage } from '../actions/message-add';
 import { AppStore } from '../../core/app.store';
 
 @Component({

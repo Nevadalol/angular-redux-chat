@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { AuthActionTypes, AUTH_SUCCESSFUL, AUTH_FAILED } from './auth.actions';
+import { AuthActionTypes, AUTH_SUCCESSFUL, AUTH_FAILED } from './actions';
 import { AuthState, initialAuthState } from './auth.state';
 
 export let authReducer: Reducer<AuthState> = function (state: AuthState = initialAuthState, action: AuthActionTypes) {
