@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Location } from '@angular/common';
 
 import { messagesFetched } from '../actions/messages-fetched';
 import { usersFetched } from '../actions/users-fetched';
@@ -21,6 +22,7 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   constructor (
     private store: AppStore,
+    private location: Location,
     private route: ActivatedRoute
   ) { }
 
@@ -38,6 +40,10 @@ export class RoomComponent implements OnInit, OnDestroy {
   ngOnDestroy () {
     this.routeParamMapSubscription.unsubscribe();
     this.routeDataSubscription.unsubscribe();
+  }
+
+  navigateBack () {
+    this.location.back();
   }
 
   private getRoomState (id: number): RoomState {

@@ -12,4 +12,5 @@ li {
 .panel-heading {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  padding: 19px 15px 18px;
 }

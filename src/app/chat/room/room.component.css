@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+h2 {
+  line-height: 34px;
+}
+
 .panel-primary {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -18,6 +22,8 @@
 .panel-heading {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .room-body {
