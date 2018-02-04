@@ -51,6 +51,6 @@ export class RoomComponent implements OnInit, OnDestroy {
   }
 
   private getRoomUsersWithAppUser (roomUsers: UserState[]): UserState[] {
-    return roomUsers.concat({...this.store.getState().auth.user});
+    return roomUsers.concat(this.store.getState().auth.user);
   }
 }
