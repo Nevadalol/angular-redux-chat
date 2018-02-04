@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSuccessLogin (username) {
     this.store.dispatch(authenticateSuccessful({
-      id: 3,
+      id: 1,
       username
     }));
 

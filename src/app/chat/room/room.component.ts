@@ -32,7 +32,7 @@ export class RoomComponent implements OnInit, OnDestroy {
     );
 
     this.routeDataSubscription = this.route.data.subscribe((data: {users: UserState[], messages: MessageState[]}) => {
-      this.store.dispatch(usersFetched(data.users));
+      this.store.dispatch(usersFetched(this.getRoomUsersWithAppUser(data.users)));
       this.store.dispatch(messagesFetched(data.messages));
     });
   }
@@ -48,5 +48,9 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   private getRoomState (id: number): RoomState {
     return this.store.getState().chat.rooms.find(room => room.id === id);
+  }
+
+  private getRoomUsersWithAppUser (roomUsers: UserState[]): UserState[] {
+    return roomUsers.concat({...this.store.getState().auth.user});
   }
 }

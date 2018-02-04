@@ -12,13 +12,13 @@ export class UsersService implements Resolve<UserState[]> {
 
   resolve (): Observable<UserState[]> {
     return Observable.of([{
-      id: 1,
+      id: 2,
       username: 'Mishka'
     }, {
-      id: 2,
+      id: 3,
       username: 'Pashka'
     }, {
-      id: 3,
+      id: 4,
       username: 'DIMOOOOOOON'
     }]).delay(100);
   }

@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 import { UserState } from '../users/user.state';
 
 export const USERS_FETCHED = 'USERS_FETCHED';
@@ -8,7 +8,7 @@ export interface UsersFetchedAction extends Action {
   users: UserState[];
 }
 
-export let usersFetched: ActionCreator<UsersFetchedAction> = function (users: UserState[]) {
+export let usersFetched = function (users: UserState[]): UsersFetchedAction {
   return {
     type: USERS_FETCHED,
     users

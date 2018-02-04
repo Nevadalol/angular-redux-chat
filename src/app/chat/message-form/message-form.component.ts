@@ -18,13 +18,16 @@ export class MessageFormComponent {
     event.preventDefault();
 
     if (this.message.value.length) {
-      this.store.dispatch(addMessage({
-        authorId: this.store.getState().auth.user.id,
-        roomId: 1,
-        content: this.message.value
-      }));
-
+      this.store.dispatch(addMessage(this.getMessagePayload()));
       this.message.setValue('');
     }
+  }
+
+  private getMessagePayload () {
+    return {
+      authorId: this.store.getState().auth.user.id,
+      roomId: 1,
+      content: this.message.value
+    };
   }
 }
