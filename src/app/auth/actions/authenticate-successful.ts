@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 import { User } from '../User';
 
 export const AUTH_SUCCESSFUL = 'AUTH_SUCCESSFUL';
@@ -10,7 +10,7 @@ export interface AuthenticateSuccessfulAction extends Action {
   user: User;
 }
 
-export let authenticateSuccessful: ActionCreator<AuthenticateSuccessfulAction> = function (user: User) {
+export let authenticateSuccessful = function (user: User): AuthenticateSuccessfulAction {
   return {
     type: AUTH_SUCCESSFUL,
     isAuthenticated: true,

@@ -8,8 +8,6 @@ import { RoomState } from '../room/room.state';
 @Injectable()
 export class RoomsService implements Resolve<RoomState[]> {
 
-  constructor() { }
-
   resolve (): Observable<RoomState[]> {
     return this.fetchRooms();
   }
@@ -19,14 +17,6 @@ export class RoomsService implements Resolve<RoomState[]> {
       id: 1,
       title: 'Monday chat',
       totalUsers: 5
-    }, {
-      id: 2,
-      title: 'Tuesday chat',
-      totalUsers: 9
-    }, {
-      id: 3,
-      title: 'Wednesday chat',
-      totalUsers: 12
     }])
       .delay(200);
   }

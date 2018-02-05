@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 import { MessageState } from '../messages/message.state';
 
 export const MESSAGE_ADD = 'MESSAGE_ADD';
@@ -8,7 +8,7 @@ export interface AddMessageAction extends Action {
   message: MessageState;
 }
 
-export let addMessage: ActionCreator<AddMessageAction> = function (message: MessageState) {
+export let addMessage = function (message: MessageState): AddMessageAction {
   return {
     type: MESSAGE_ADD,
     message

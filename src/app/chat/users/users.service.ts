@@ -14,12 +14,6 @@ export class UsersService implements Resolve<UserState[]> {
     return Observable.of([{
       id: 2,
       username: 'Mishka'
-    }, {
-      id: 3,
-      username: 'Pashka'
-    }, {
-      id: 4,
-      username: 'DIMOOOOOOON'
     }]).delay(100);
   }
 }

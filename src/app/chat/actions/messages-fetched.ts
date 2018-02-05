@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 import { MessageState } from '../messages/message.state';
 
 export const MESSAGES_FETCHED = 'MESSAGES_FETCHED';
@@ -8,7 +8,7 @@ export interface MessagesFetchedAction extends Action {
   messages: MessageState[];
 }
 
-export let messagesFetched: ActionCreator<MessagesFetchedAction> = function (messages: MessageState[]) {
+export let messagesFetched = function (messages: MessageState[]): MessagesFetchedAction {
   return {
     type: MESSAGES_FETCHED,
     messages

@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 
 export const AUTH_FAILED = 'AUTH_FAILED';
 
@@ -8,7 +8,7 @@ export interface AuthenticateFailedAction extends Action {
   hasError: boolean;
 }
 
-export let authenticateFailed: ActionCreator<AuthenticateFailedAction> = function () {
+export let authenticateFailed = function (): AuthenticateFailedAction {
   return {
     type: AUTH_FAILED,
     isAuthenticated: false,

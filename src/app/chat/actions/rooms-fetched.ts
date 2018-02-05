@@ -1,4 +1,4 @@
-import { Action, ActionCreator } from 'redux';
+import { Action } from 'redux';
 import { RoomState } from '../room/room.state';
 
 export const ROOMS_FETCHED = 'ROOMS_FETCHED';
@@ -8,7 +8,7 @@ export interface RoomsFetchedAction extends Action {
   rooms: RoomState[];
 }
 
-export let roomsFetched: ActionCreator<RoomsFetchedAction> = function (rooms: RoomState[]) {
+export let roomsFetched = function (rooms: RoomState[]): RoomsFetchedAction {
   return {
     type: ROOMS_FETCHED,
     rooms

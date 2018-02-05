@@ -26,8 +26,8 @@ export class MessageFormComponent {
   private getMessagePayload () {
     return {
       authorId: this.store.getState().auth.user.id,
-      roomId: 1,
-      content: this.message.value
+      content: this.message.value,
+      roomId: 1
     };
   }
 }

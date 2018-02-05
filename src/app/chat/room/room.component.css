@@ -13,10 +13,6 @@ h2 {
   border-right: 0;
   margin-bottom: 0;
   flex-grow: 2;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
 }
 
 .panel-heading {

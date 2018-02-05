@@ -21,16 +21,6 @@ export class MessagesService implements Resolve<MessageState[]> {
       authorId: 2,
       roomId: 1,
       content: 'Muahahhaha!'
-    }, {
-      id: 3,
-      authorId: 2,
-      roomId: 1,
-      content: 'Hey you'
-    }, {
-      id: 4,
-      authorId: 3,
-      roomId: 1,
-      content: 'ДИМОН АМОН'
     }]);
   }
 }
