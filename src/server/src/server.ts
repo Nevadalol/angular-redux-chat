@@ -1,9 +1,14 @@
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import { ROOT } from './constants';
 
 const app = express();
 
+let messagesId = 0;
+const messages = [];
+
 app.use(express.static(ROOT));
+app.use(bodyParser.json());
 
 app.get('/api/rooms', function (req, res) {
   res.json([{
@@ -21,17 +26,19 @@ app.get('/api/rooms/:roomId/users', function (req, res) {
 });
 
 app.get('/api/rooms/:roomId/messages', function (req, res) {
-  res.json([{
-    id: 1,
-    authorId: 1,
-    roomId: 1,
-    content: 'Hello, world!'
-  }, {
-    id: 2,
-    authorId: 2,
-    roomId: 1,
-    content: 'Muahahhaha!'
-  }]);
+  res.json(messages);
+});
+
+app.post('/api/rooms/:roomId/messages', function (req, res) {
+  let message = {
+    id: ++messagesId,
+    authorId: req.body.authorId,
+    roomId: req.params.roomId,
+    content: req.body.content
+  };
+
+  messages.push(message);
+  res.json(message);
 });
 
 app.get('*', function (req, res) {
