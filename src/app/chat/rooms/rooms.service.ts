@@ -18,12 +18,5 @@ export class RoomsService implements Resolve<RoomState[]> {
 
   fetchRooms (): Observable<RoomState[]> {
     return this.http.get<RoomState[]>('api/rooms');
-
-    // return Observable.of([{
-    //   id: 1,
-    //   title: 'Monday chat',
-    //   totalUsers: 5
-    // }])
-    //   .delay(200);
   }
 }
