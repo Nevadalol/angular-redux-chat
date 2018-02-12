@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 
 import { RoomState } from '../room/room.state';
 
 @Injectable()
 export class RoomsService implements Resolve<RoomState[]> {
 
+  constructor (private http: HttpClient) {}
+
   resolve (): Observable<RoomState[]> {
     return this.fetchRooms();
   }
 
   fetchRooms (): Observable<RoomState[]> {
-    return Observable.of([{
-      id: 1,
-      title: 'Monday chat',
-      totalUsers: 5
-    }])
-      .delay(200);
+    return this.http.get<RoomState[]>('api/rooms');
+
+    // return Observable.of([{
+    //   id: 1,
+    //   title: 'Monday chat',
+    //   totalUsers: 5
+    // }])
+    //   .delay(200);
   }
 }
